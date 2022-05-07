@@ -30,12 +30,16 @@ const updateUI = (data) =>{
     const iconSrc = `../img/icons/${weather.WeatherIcon}.svg`;//there are 44 weather icons in total
     icon.setAttribute('src', iconSrc);
 
-    let timeSrc = null;
-    if(weather.IsDayTime) {
-        timeSrc = '../img/day.svg';
-    }else{
-        timeSrc = '../img/night.svg';
-    }
+    //let timeSrc = null;
+    //if(weather.IsDayTime) {
+    //    timeSrc = '../img/day.svg';
+    //}else{
+    //    timeSrc = '../img/night.svg';
+    //}
+
+    //use ternary operator for the condition
+    let timeSrc = weather.IsDayTime ? '../img/day.svg' : '../img/night.svg' ;
+
     time.setAttribute('src', timeSrc);
 
     //remove the d-none class if present
