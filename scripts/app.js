@@ -81,6 +81,16 @@ cityForm.addEventListener('submit', e => {
     updateCity(city)
         .then(data => updateUI(data))
         .catch(err => console.log(err));
-    ;
-
+    
+    
+    //set local storage
+    //take the city name typed by user and store it in local storage.Use it to make a req any time the use refreshes the page;first check if there's a city stored and use it to make the req
+    localStorage.setItem('city', city);
 });
+
+//check if city name is in local storage
+if (localStorage.getItem('city')){
+    updateCity(localStorage.getItem('city'))
+        .then(data => updateUI(data))
+        .catch(err => console.log(err));
+}
