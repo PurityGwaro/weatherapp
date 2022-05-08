@@ -4,6 +4,7 @@ const card =  document.querySelector('.card')
 const details = document.querySelector('.details');
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
+const forecast = new Forecast();
 
 
 const updateUI = (data) =>{
@@ -49,7 +50,7 @@ const updateUI = (data) =>{
 
 
 };
-
+/*
 const updateCity = async (city) => {
     //make a call to getCity to get city key
     //then call getWeather and use the city key to get the condition
@@ -66,8 +67,8 @@ const updateCity = async (city) => {
         weather
     };
 
-};
-
+};//this function was added to the class in the forecast.js file
+*/
 cityForm.addEventListener('submit', e => {
     //prevent default action
     e.preventDefault();
@@ -78,7 +79,7 @@ cityForm.addEventListener('submit', e => {
     //console.log(city);
 
     //update the UI with the new city
-    updateCity(city)
+    forecast.updateCity(city)
         .then(data => updateUI(data))
         .catch(err => console.log(err));
     
@@ -90,7 +91,7 @@ cityForm.addEventListener('submit', e => {
 
 //check if city name is in local storage
 if (localStorage.getItem('city')){
-    updateCity(localStorage.getItem('city'))
+    forecast.updateCity(localStorage.getItem('city'))
         .then(data => updateUI(data))
         .catch(err => console.log(err));
 }
